@@ -80,11 +80,12 @@ if response.status_code == 200:
             entry = f"{desc}: [{payload['title']}]({payload['html_url']})"
             entries.append((event_type, entry))
 
-        if not entries:
-            print(f"## {repo_name}\n")
+        if entries:
+            print(f"\n- {repo_name}")
+            print(f"  - @{username} (XX days)")
 
         for (event_type, entry) in entries:
-            print(f"- {entry}")
+            print(f"  - {entry}")
 
 else:
     print(f"Error: Could not retrieve events for user {username}")
