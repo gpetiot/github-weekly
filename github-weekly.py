@@ -41,7 +41,7 @@ if response.status_code == 200:
                 event_dict[repo] = [event]
 
     for repo_name, events in event_dict.items():
-        entries = []
+        entries = set ()
 
         for event in events:
             event_type = event['type']
@@ -78,7 +78,7 @@ if response.status_code == 200:
                 continue
 
             entry = f"{desc}: [{payload['title']}]({payload['html_url']})"
-            entries.append((event_type, entry))
+            entries.add((event_type, entry))
 
         if entries:
             print(f"\n- {repo_name}")
